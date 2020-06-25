@@ -56,18 +56,20 @@ class _HomeState extends State<Home> {
             mainAxisSpacing: 15.0,
           ),
           itemBuilder: (context, index) {
-            return Container(
-              color: Colors.white,
-              padding: EdgeInsets.all(10),
-
+            return Card(
+              elevation: 5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     marbresList[index]['title'],
                     style: TextStyle(
                       fontSize: 20,
                       color: Color(0xFF2727ff),
+                      fontWeight: FontWeight.bold,
                     ),
                   )
                 ],
