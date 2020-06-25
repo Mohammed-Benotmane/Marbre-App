@@ -52,27 +52,43 @@ class _HomeState extends State<Home> {
           itemCount: marbresList.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 15.0,
             mainAxisSpacing: 15.0,
           ),
           itemBuilder: (context, index) {
-            return Card(
-              elevation: 5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(height: 10),
-                  Text(
-                    marbresList[index]['title'],
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFF2727ff),
-                      fontWeight: FontWeight.bold,
+            return Container(
+              height: MediaQuery.of(context).size.height / 3,
+              child: Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                elevation: 5,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(height: 10),
+                    Text(
+                      marbresList[index]['title'],
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color(0xFF2727ff),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Image.network(marbresList[index]['image']),
-                ],
+                    SizedBox(height: 10),
+                    Image.network(
+                      marbresList[index]['image'],
+                      height: 100,
+
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      marbresList[index]['price'].toString(),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[700],
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                  ],
+                ),
               ),
             );
           },
