@@ -61,9 +61,7 @@ class _HomeState extends State<Home> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(
-                    height: 10,
-                  ),
+                  SizedBox(height: 10),
                   Text(
                     marbresList[index]['title'],
                     style: TextStyle(
@@ -71,7 +69,9 @@ class _HomeState extends State<Home> {
                       color: Color(0xFF2727ff),
                       fontWeight: FontWeight.bold,
                     ),
-                  )
+                  ),
+                  SizedBox(height: 10),
+                  Image.network(marbresList[index]['image']),
                 ],
               ),
             );
