@@ -16,6 +16,66 @@ class _HomeState extends State<Home> {
   String imageUrl;
   List marbresList = [];
 
+  customAppBar() {
+    return Expanded(
+      flex: 1,
+      child: Stack(
+        children: <Widget>[
+          Positioned.fill(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 25),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: mainColor,
+                    borderRadius:
+                        BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        "Welcome to Marbre",
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 26,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      CircleAvatar(
+                        child: Icon(Icons.person),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            child: Center(
+              child: Container(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Search",
+                    fillColor: Colors.white,
+                    filled: true,
+                    enabledBorder: UnderlineInputBorder(borderRadius: BorderRadius.circular(25)),
+                    focusedBorder: UnderlineInputBorder(borderRadius: BorderRadius.circular(25)),
+                  ),
+                ),
+                width: MediaQuery.of(context).size.width * .8,
+              ),
+            ),
+            bottom: 0,
+            left: 0,
+            right: 0,
+          )
+        ],
+      ),
+    );
+  }
+
   Future<void> getMarbre() async {
     try {
       Response response = await get('https://marbreapplication.herokuapp.com/marbres');
@@ -41,89 +101,92 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
+      drawer: Drawer(),
       appBar: AppBar(
-        title: Text("Marbre App"),
-        centerTitle: true,
+        elevation: 0,
         backgroundColor: mainColor,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: GridView.builder(
-          itemCount: marbresList.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 15.0,
-            childAspectRatio: 1 / 1.3,
-          ),
-          itemBuilder: (context, index) {
-            return Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-              elevation: 2,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          Image.network(
+      body: Column(
+        children: <Widget>[
+          customAppBar(),
+          Expanded(
+            flex: 4,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: GridView.builder(
+                itemCount: marbresList.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 15.0,
+                  childAspectRatio: 1 / 1.3,
+                ),
+                itemBuilder: (context, index) => Card(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  elevation: 2,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Column(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 5,
+                          child: Image.network(
                             marbresList[index]['image'],
-                            fit: BoxFit.fitHeight,
+                            fit: BoxFit.fill,
+                            width: MediaQuery.of(context).size.width / 2,
                           ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 12,
-                              vertical: 4,
                             ),
-                            child: Row(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Expanded(
-                                  child: Text(
-                                    marbresList[index]['title'],
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.grey.shade800,
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Text(
+                                        marbresList[index]['title'],
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.grey.shade800,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Text(
+                                      "${marbresList[index]['price']} DA",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: mainColor,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                SizedBox(height: 5),
                                 Text(
-                                  marbresList[index]['price'].toString(),
+                                  marbresList[index]['origin'].toString(),
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 12,
                                     color: mainColor,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          Text(
-                            marbresList[index]['origin'].toString(),
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: mainColor,
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
