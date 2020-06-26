@@ -53,42 +53,40 @@ class _HomeState extends State<Home> {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 15.0,
+            childAspectRatio: 1 / 1.25,
           ),
           itemBuilder: (context, index) {
-            return Container(
-              height: MediaQuery.of(context).size.height / 3,
-              child: Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                elevation: 5,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: 10),
-                    Text(
-                      marbresList[index]['title'],
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color(0xFF2727ff),
-                        fontWeight: FontWeight.bold,
-                      ),
+            return Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              elevation: 5,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(height: 10),
+                  Text(
+                    marbresList[index]['title'],
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color(0xFF2727ff),
+                      fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(height: 10),
-                    Image.network(
+                  ),
+                  SizedBox(height: 10),
+                  Expanded(
+                    child: Image.network(
                       marbresList[index]['image'],
-                      height: 100,
-
                     ),
-                    SizedBox(height: 10),
-                    Text(
-                      marbresList[index]['price'].toString(),
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[700],
-                      ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    marbresList[index]['price'].toString(),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[700],
                     ),
-                    SizedBox(height: 30),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 30),
+                ],
               ),
             );
           },
