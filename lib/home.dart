@@ -105,7 +105,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(margin: EdgeInsets.all(0),child: Container(color: mainColor),)
+          ],
+        ),
+      ),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: mainColor,
@@ -121,7 +127,8 @@ class _HomeState extends State<Home> {
                 itemCount: marbresList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 15.0,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 5,
                   childAspectRatio: 1 / 1.3,
                 ),
                 itemBuilder: (context, index) => Card(
@@ -149,15 +156,23 @@ class _HomeState extends State<Home> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
+                                Text(
+                                  marbresList[index]['title'],
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey.shade800,
+                                  ),
+                                ),
+                                SizedBox(height: 5),
                                 Row(
                                   children: <Widget>[
                                     Expanded(
                                       child: Text(
-                                        marbresList[index]['title'],
-                                        overflow: TextOverflow.ellipsis,
+                                        marbresList[index]['origin'].toString(),
                                         style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.grey.shade800,
+                                          fontSize: 12,
+                                          color: mainColor,
                                         ),
                                       ),
                                     ),
@@ -170,14 +185,6 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                   ],
-                                ),
-                                SizedBox(height: 5),
-                                Text(
-                                  marbresList[index]['origin'].toString(),
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: mainColor,
-                                  ),
                                 ),
                               ],
                             ),
