@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:sofamarbre/const.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Marbre App"),
         centerTitle: true,
-        backgroundColor: Color(0xFF2727ff),
+        backgroundColor: mainColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -52,7 +53,7 @@ class _HomeState extends State<Home> {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 15.0,
-            childAspectRatio: 1 / 1.55,
+            childAspectRatio: 1 / 1.3,
           ),
           itemBuilder: (context, index) {
             return Card(
@@ -61,35 +62,61 @@ class _HomeState extends State<Home> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Expanded(
-                      child: Image.network(
-                        marbresList[index]['image'],
-                        fit: BoxFit.fitHeight,
+                      flex: 4,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Image.network(
+                            marbresList[index]['image'],
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          marbresList[index]['title'],
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Color(0xFF2727ff),
-                            fontWeight: FontWeight.bold,
+                    Expanded(
+                      flex: 2,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 4,
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text(
+                                    marbresList[index]['title'],
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.grey.shade800,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  marbresList[index]['price'].toString(),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: mainColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 10),
-
-                        Text(
-                          marbresList[index]['price'].toString(),
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[700],
+                          Text(
+                            marbresList[index]['origin'].toString(),
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: mainColor,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
