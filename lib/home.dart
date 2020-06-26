@@ -108,7 +108,8 @@ class _HomeState extends State<Home> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            DrawerHeader(margin: EdgeInsets.all(0),child: Container(color: mainColor),)
+            DrawerHeader(margin: EdgeInsets.all(0
+            ),child: Container(color: mainColor),)
           ],
         ),
       ),
