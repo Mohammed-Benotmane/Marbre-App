@@ -20,7 +20,6 @@ class _HomeState extends State<Home> {
       Response response = await get('https://marbreapplication.herokuapp.com/marbres');
       Map marbres = jsonDecode(response.body);
       marbresList = marbres['marbres'];
-      print(marbresList);
     } catch (e) {
       print(e.toString());
     }
@@ -53,40 +52,47 @@ class _HomeState extends State<Home> {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 15.0,
-            childAspectRatio: 1 / 1.25,
+            childAspectRatio: 1 / 1.55,
           ),
           itemBuilder: (context, index) {
             return Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              elevation: 5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(height: 10),
-                  Text(
-                    marbresList[index]['title'],
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFF2727ff),
-                      fontWeight: FontWeight.bold,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              elevation: 2,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      child: Image.network(
+                        marbresList[index]['image'],
+                        fit: BoxFit.fitHeight,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Expanded(
-                    child: Image.network(
-                      marbresList[index]['image'],
+                    SizedBox(height: 10),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          marbresList[index]['title'],
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFF2727ff),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+
+                        Text(
+                          marbresList[index]['price'].toString(),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    marbresList[index]['price'].toString(),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[700],
-                    ),
-                  ),
-                  SizedBox(height: 30),
-                ],
+                  ],
+                ),
               ),
             );
           },
