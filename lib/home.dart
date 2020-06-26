@@ -30,9 +30,10 @@ class _HomeState extends State<Home> {
                     borderRadius:
                         BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                  padding: const EdgeInsets.fromLTRB(18,0,18,35),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                     children: <Widget>[
                       Text(
                         "Welcome to Marbre",
@@ -44,7 +45,9 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       CircleAvatar(
-                        child: Icon(Icons.person),
+                        radius: 28,
+                        backgroundColor: Colors.white,
+                        child: Icon(Icons.person,color: mainColor,size: 30,),
                       )
                     ],
                   ),
@@ -57,11 +60,12 @@ class _HomeState extends State<Home> {
               child: Container(
                 child: TextField(
                   decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search),
                     hintText: "Search",
                     fillColor: Colors.white,
                     filled: true,
-                    enabledBorder: UnderlineInputBorder(borderRadius: BorderRadius.circular(25)),
-                    focusedBorder: UnderlineInputBorder(borderRadius: BorderRadius.circular(25)),
+                    enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(25)),
+                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(25)),
                   ),
                 ),
                 width: MediaQuery.of(context).size.width * .8,
