@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
 
   Future<void> getMarbre() async {
     try {
-      Response response = await get('https://marbreapplication.herokuapp.com/marbres');
+      Response response = await get('https://marbreproject.herokuapp.com/marbres');
       Map marbres = jsonDecode(response.body);
       marbresList = marbres['marbres'];
     } catch (e) {
