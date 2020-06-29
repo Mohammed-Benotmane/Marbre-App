@@ -34,6 +34,23 @@ class _MarbreDetailState extends State<MarbreDetail> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    FlatButton.icon(
+                      label: Text(""),
+                      onPressed: () {},
+                      icon: Icon(Icons.add,color: mainColor,size: 50,),
+                    ),
+                    SizedBox(height: 20),
+                    Text("${widget.marbre.price}"),
+                    SizedBox(height: 20),
+                    FlatButton.icon(
+                      label: Text(""),
+                      onPressed: () {},
+                      icon: Icon(Icons.minimize,color: mainColor,size: 50,),
+                    ),
+                  ],
+                ),
                 Material(
                   elevation: 10,
                   shadowColor: mainColor,
@@ -48,8 +65,10 @@ class _MarbreDetailState extends State<MarbreDetail> {
                     ),
                   ),
                 ),
+
               ],
             ),
+            SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.only(top: 15, right: 15),
               child: Row(
@@ -78,6 +97,20 @@ class _MarbreDetailState extends State<MarbreDetail> {
               style: TextStyle(
                 fontSize: 16,
                 color: mainColor,
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(topRight: Radius.circular(25),bottomLeft: Radius.circular(25)),
+                child: RaisedButton(
+                  padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
+                  onPressed: () {},
+                  color: mainColor,
+                  child: Text("Validate",style: TextStyle(color: Colors.white,fontSize: 25),),
+                ),
               ),
             ),
           ],
