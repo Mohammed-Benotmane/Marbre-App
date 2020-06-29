@@ -11,14 +11,12 @@ class MarbreDetail extends StatefulWidget {
   _MarbreDetailState createState() => _MarbreDetailState();
 }
 
-
 class _MarbreDetailState extends State<MarbreDetail> {
-
   @override
   void initState() {
     super.initState();
-    print(widget.marbre.price);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,27 +27,62 @@ class _MarbreDetailState extends State<MarbreDetail> {
         title: Text("Marbre Detail"),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 10, left: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-
-            Material(
-              elevation: 10,
-              shadowColor: mainColor,
-              borderRadius: BorderRadius.circular(25),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(25),
-                child: Image.network(widget.marbre.image,
-                width: MediaQuery.of(context).size.width/1.5,
-                height: MediaQuery.of(context).size.height/1.5,fit: BoxFit.fitHeight,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Material(
+                  elevation: 10,
+                  shadowColor: mainColor,
+                  borderRadius: BorderRadius.circular(25),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: Image.network(
+                      widget.marbre.image,
+                      width: MediaQuery.of(context).size.width / 1.5,
+                      height: MediaQuery.of(context).size.height / 1.5,
+                      fit: BoxFit.fitHeight,
+                    ),
+                  ),
                 ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    widget.marbre.title,
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey.shade800,
+                    ),
+                  ),
+                  Text(
+                    "${widget.marbre.price} DA",
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: mainColor,
+                    ),
+                  ),
+                ],
               ),
             ),
-
+            Text(
+              widget.marbre.origin.toUpperCase(),
+              style: TextStyle(
+                fontSize: 16,
+                color: mainColor,
+              ),
+            ),
           ],
         ),
       ),
-      );
+    );
   }
 }

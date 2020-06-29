@@ -122,7 +122,7 @@ class _HomeState extends State<Home> {
                                         children: <Widget>[
                                           Expanded(
                                             child: Text(
-                                              marbresList[index]['origin'].toString(),
+                                              marbresList[index]['origin'].toString().toUpperCase(),
                                               style: TextStyle(
                                                 fontSize: 12,
                                                 color: mainColor,
