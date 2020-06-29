@@ -10,9 +10,20 @@ class MarbreDetail extends StatefulWidget {
   _MarbreDetailState createState() => _MarbreDetailState();
 }
 
+
 class _MarbreDetailState extends State<MarbreDetail> {
+
+  @override
+  void initState() {
+    super.initState();
+    print(widget.marbre.price);
+  }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("test"),
+      ),
+    );
   }
 }
