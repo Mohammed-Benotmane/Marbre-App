@@ -24,32 +24,37 @@ class _HomeState extends State<Home> {
           Positioned.fill(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 25),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: mainColor,
-                    borderRadius:
-                        BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(18,0,18,35),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Material(
+                elevation: 7,
+                borderRadius: BorderRadius.circular(25),
+                shadowColor: mainColor,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: mainColor,
+                      borderRadius:
+                          BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(18,0,18,35),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                    children: <Widget>[
-                      Text(
-                        "Welcome to Marbre",
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 26,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
+                      children: <Widget>[
+                        Text(
+                          "Welcome to Marbre",
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 26,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.person,color: mainColor,size: 30,),
-                      )
-                    ],
+                        CircleAvatar(
+                          radius: 28,
+                          backgroundColor: Colors.white,
+                          child: Icon(Icons.person,color: mainColor,size: 30,),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -60,7 +65,7 @@ class _HomeState extends State<Home> {
               child: Container(
                 child: Material(
                   borderRadius:BorderRadius.circular(25),
-                  elevation: 10,
+                  elevation: 7,
                   shadowColor: mainColor,
                   child: TextField(
 
