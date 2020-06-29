@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sofamarbre/const.dart';
 import 'package:sofamarbre/models/marbre.dart';
 
 class MarbreDetail extends StatefulWidget {
@@ -22,8 +23,33 @@ class _MarbreDetailState extends State<MarbreDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("test"),
+        elevation: 10,
+        centerTitle: true,
+        backgroundColor: mainColor,
+        title: Text("Marbre Detail"),
       ),
-    );
+      body: Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+
+            Material(
+              elevation: 10,
+              shadowColor: mainColor,
+              borderRadius: BorderRadius.circular(25),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: Image.network(widget.marbre.image,
+                width: MediaQuery.of(context).size.width/1.5,
+                height: MediaQuery.of(context).size.height/1.5,fit: BoxFit.fitHeight,
+                ),
+              ),
+            ),
+
+          ],
+        ),
+      ),
+      );
   }
 }
