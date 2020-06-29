@@ -58,14 +58,20 @@ class _HomeState extends State<Home> {
           Positioned(
             child: Center(
               child: Container(
-                child: TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
-                    hintText: "Search",
-                    fillColor: Colors.white,
-                    filled: true,
-                    enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(25)),
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(25)),
+                child: Material(
+                  borderRadius:BorderRadius.circular(25),
+                  elevation: 10,
+                  shadowColor: mainColor,
+                  child: TextField(
+
+                      decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.search),
+                      hintText: "Search",
+                      fillColor: Colors.white,
+                      filled: true,
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(25)),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(25)),
+                    ),
                   ),
                 ),
                 width: MediaQuery.of(context).size.width * .8,
@@ -123,7 +129,7 @@ class _HomeState extends State<Home> {
           Expanded(
             flex: 4,
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.fromLTRB(15,30,15,15),
               child: GridView.builder(
                 itemCount: marbresList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
