@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:sofamarbre/const.dart';
+import 'package:sofamarbre/models/marbre.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -146,69 +147,78 @@ class _HomeState extends State<Home> {
                   crossAxisSpacing: 5,
                   childAspectRatio: 1 / 1.3,
                 ),
-                itemBuilder: (context, index) => Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  elevation: 2,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 5,
-                          child: Image.network(
-                            marbresList[index]['image'],
-                            fit: BoxFit.fill,
-                            width: MediaQuery.of(context).size.width / 2,
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
+                itemBuilder: (context, index){
+                  return GestureDetector(
+                    onTap: (){
+                      Navigator.push(context,MaterialPageRoute(builder: (context) {
+                        return Marbre(marbresList[index]['title'],marbresList[index]['image'],marbresList[index]['price'],marbresList[index]['origin']);
+                      }));
+                    },
+                    child: Card(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    elevation: 2,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 5,
+                            child: Image.network(
+                              marbresList[index]['image'],
+                              fit: BoxFit.fill,
+                              width: MediaQuery.of(context).size.width / 2,
                             ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  marbresList[index]['title'],
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey.shade800,
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    marbresList[index]['title'],
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey.shade800,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 5),
-                                Row(
-                                  children: <Widget>[
-                                    Expanded(
-                                      child: Text(
-                                        marbresList[index]['origin'].toString(),
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: mainColor,
+                                  SizedBox(height: 5),
+                                  Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Text(
+                                          marbresList[index]['origin'].toString(),
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: mainColor,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Text(
-                                      "${marbresList[index]['price']} DA",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: mainColor,
-                                        fontWeight: FontWeight.w600,
+                                      Text(
+                                        "${marbresList[index]['price']} DA",
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: mainColor,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
                 ),
+                  );
+                }
               ),
             ),
           ),
