@@ -127,6 +127,9 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: mainColor,
+        actions: <Widget>[
+          IconButton(onPressed: (){}, icon: Icon(Icons.filter_list))
+        ],
       ),
       body: Column(
         children: <Widget>[
