@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:sofamarbre/const.dart';
 import 'package:sofamarbre/models/marbre.dart';
+import 'package:sofamarbre/screens/marbre_detail.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -32,13 +33,12 @@ class _HomeState extends State<Home> {
                 child: Container(
                   decoration: BoxDecoration(
                       color: mainColor,
-                      borderRadius:
-                          BorderRadius.only(bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(18,0,18,35),
+                    padding: const EdgeInsets.fromLTRB(18, 0, 18, 35),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                       children: <Widget>[
                         Text(
                           "Welcome to Marbre",
@@ -52,7 +52,11 @@ class _HomeState extends State<Home> {
                         CircleAvatar(
                           radius: 28,
                           backgroundColor: Colors.white,
-                          child: Icon(Icons.person,color: mainColor,size: 30,),
+                          child: Icon(
+                            Icons.person,
+                            color: mainColor,
+                            size: 30,
+                          ),
                         )
                       ],
                     ),
@@ -65,18 +69,21 @@ class _HomeState extends State<Home> {
             child: Center(
               child: Container(
                 child: Material(
-                  borderRadius:BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(25),
                   elevation: 7,
                   shadowColor: mainColor,
                   child: TextField(
-
-                      decoration: InputDecoration(
+                    decoration: InputDecoration(
                       prefixIcon: Icon(Icons.search),
                       hintText: "Search",
                       fillColor: Colors.white,
                       filled: true,
-                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(25)),
-                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(25)),
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(25)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(25)),
                     ),
                   ),
                 ),
@@ -120,17 +127,17 @@ class _HomeState extends State<Home> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            DrawerHeader(margin: EdgeInsets.all(0
-            ),child: Container(color: mainColor),)
+            DrawerHeader(
+              margin: EdgeInsets.all(0),
+              child: Container(color: mainColor),
+            )
           ],
         ),
       ),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: mainColor,
-        actions: <Widget>[
-          IconButton(onPressed: (){}, icon: Icon(Icons.filter_list))
-        ],
+        actions: <Widget>[IconButton(onPressed: () {}, icon: Icon(Icons.filter_list))],
       ),
       body: Column(
         children: <Widget>[
@@ -138,88 +145,88 @@ class _HomeState extends State<Home> {
           Expanded(
             flex: 4,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(15,30,15,15),
+              padding: const EdgeInsets.fromLTRB(15, 30, 15, 15),
               child: GridView.builder(
-                itemCount: marbresList.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 5,
-                  childAspectRatio: 1 / 1.3,
-                ),
-                itemBuilder: (context, index){
-                  return GestureDetector(
-                    onTap: (){
-                      Navigator.push(context,MaterialPageRoute(builder: (context) {
-                        return Marbre(marbresList[index]['title'],marbresList[index]['image'],marbresList[index]['price'],marbresList[index]['origin']);
-                      }));
-                    },
-                    child: Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                    elevation: 2,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Column(
-                        children: <Widget>[
-                          Expanded(
-                            flex: 5,
-                            child: Image.network(
-                              marbresList[index]['image'],
-                              fit: BoxFit.fill,
-                              width: MediaQuery.of(context).size.width / 2,
-                            ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
+                  itemCount: marbresList.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 5,
+                    childAspectRatio: 1 / 1.3,
+                  ),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return MarbreDetail(Marbre(title: marbresList[index]['title'],image: marbresList[index]['image'],
+                              price:marbresList[index]['price'],origin: marbresList[index]['origin']));
+                        }));
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                        elevation: 2,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Column(
+                            children: <Widget>[
+                              Expanded(
+                                flex: 5,
+                                child: Image.network(
+                                  marbresList[index]['image'],
+                                  fit: BoxFit.fill,
+                                  width: MediaQuery.of(context).size.width / 2,
+                                ),
                               ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    marbresList[index]['title'],
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.grey.shade800,
-                                    ),
+                              Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
                                   ),
-                                  SizedBox(height: 5),
-                                  Row(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Expanded(
-                                        child: Text(
-                                          marbresList[index]['origin'].toString(),
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: mainColor,
-                                          ),
+                                      Text(
+                                        marbresList[index]['title'],
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.grey.shade800,
                                         ),
                                       ),
-                                      Text(
-                                        "${marbresList[index]['price']} DA",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: mainColor,
-                                          fontWeight: FontWeight.w600,
-                                        ),
+                                      SizedBox(height: 5),
+                                      Row(
+                                        children: <Widget>[
+                                          Expanded(
+                                            child: Text(
+                                              marbresList[index]['origin'].toString(),
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: mainColor,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            "${marbresList[index]['price']} DA",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: mainColor,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                ),
-                  );
-                }
-              ),
+                    );
+                  }),
             ),
           ),
         ],
