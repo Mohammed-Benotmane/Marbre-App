@@ -72,6 +72,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: mainColor,
@@ -85,81 +86,90 @@ class _MarbreDetailState extends State<MarbreDetail> {
             flex: 3,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Center(
-                  child: Material(
-                    elevation: 10,
-                    shadowColor: mainColor,
-                    borderRadius: BorderRadius.circular(25),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(25),
-                      child: Image.network(
-                        widget.marbre.image,
-                        height: 200,
-                        width: 300,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        widget.marbre.title,
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey.shade800,
-                        ),
-                      ),
-                      Text(
-                        "${widget.marbre.price} DA",
-                        style: TextStyle(
-                          fontSize: 22,
-                          color: mainColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Text(
-                    widget.marbre.origin.toUpperCase(),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: mainColor,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                  child: Text(widget.marbre.description,
-                    style:TextStyle(color: Colors.grey.shade700),),
-                ),
-                SizedBox(height: 30),
-                Center(
                   child: ClipRRect(
-                    borderRadius:
-                    BorderRadius.circular(25),
-                    child: RaisedButton(
-                      padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
-                      onPressed: () {},
-                      color: mainColor,
-                      child: Text(
-                        "Validate",
-                        style: TextStyle(color: Colors.white, fontSize: 25),
+                    borderRadius: BorderRadius.circular(25),
+                    child: Image.network(
+                      widget.marbre.image,
+                      height: 200,
+                      width: 300,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+                Material(
+                  borderRadius: BorderRadius.circular(25),
+                  elevation: 10,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: Container(
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Text(
+                              widget.marbre.title,
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey.shade800,
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              widget.marbre.origin.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: mainColor,
+                              ),
+                            ),
+                            SizedBox(height: 15),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                              child: Text(widget.marbre.description,
+                                style:TextStyle(color: Colors.grey.shade700),),
+                            ),
+                            SizedBox(height: 15),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text(
+                                    "${widget.marbre.price} DA",
+                                    style: TextStyle(
+                                      fontSize: 22,
+                                      color: mainColor,
+                                    ),
+                                  ),
+                                  ClipRRect(
+                                    borderRadius:
+                                    BorderRadius.circular(25),
+                                    child: RaisedButton(
+                                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                                      onPressed: () {},
+                                      color: mainColor,
+                                      child: Text(
+                                        "Validate",
+                                        style: TextStyle(color: Colors.white, fontSize: 20),
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                        ),
+                    ),
+                            SizedBox(height: 10),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-
               ],
             ),
           ),

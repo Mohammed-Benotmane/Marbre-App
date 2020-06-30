@@ -82,7 +82,10 @@ class _HomeState extends State<Home> {
                               title: marbresList[index]['title'],
                               image: marbresList[index]['image'],
                               price: marbresList[index]['price'],
-                              origin: marbresList[index]['origin']));
+                              origin: marbresList[index]['origin'],
+                              description: marbresList[index]['description']
+                          )
+                          );
                         }));
                       },
                       child: Card(
