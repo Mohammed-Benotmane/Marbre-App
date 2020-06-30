@@ -84,6 +84,8 @@ class _MarbreDetailState extends State<MarbreDetail> {
           Expanded(
             flex: 3,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Center(
                   child: Material(
@@ -101,9 +103,9 @@ class _MarbreDetailState extends State<MarbreDetail> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 Padding(
-                  padding: const EdgeInsets.only(top: 15, right: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -125,18 +127,28 @@ class _MarbreDetailState extends State<MarbreDetail> {
                     ],
                   ),
                 ),
-                Text(
-                  widget.marbre.origin.toUpperCase(),
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: mainColor,
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text(
+                    widget.marbre.origin.toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: mainColor,
+                    ),
                   ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  child: Text(
+                    "Description Description Description Description Description Description Description Description Description Description Description Description Description Description ",
+                    style:TextStyle(color: Colors.grey.shade700),),
                 ),
                 SizedBox(height: 30),
                 Center(
                   child: ClipRRect(
                     borderRadius:
-                        BorderRadius.only(topRight: Radius.circular(25), bottomLeft: Radius.circular(25)),
+                    BorderRadius.circular(25),
                     child: RaisedButton(
                       padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
                       onPressed: () {},
@@ -148,6 +160,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
                     ),
                   ),
                 ),
+
               ],
             ),
           ),
