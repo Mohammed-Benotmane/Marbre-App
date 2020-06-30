@@ -97,8 +97,6 @@ class _MarbreDetailState extends State<MarbreDetail> {
                         height: 200,
                         width: 300,
                         fit: BoxFit.fill,
-
-
                       ),
                     ),
                   ),

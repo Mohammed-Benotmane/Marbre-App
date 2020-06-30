@@ -19,8 +19,6 @@ class _HomeState extends State<Home> {
   String imageUrl;
   List marbresList = [];
 
-
-
   Future<void> getMarbre() async {
     try {
       Response response = await get('https://marbreproject.herokuapp.com/marbres');
@@ -80,8 +78,11 @@ class _HomeState extends State<Home> {
                     return GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return MarbreDetail(Marbre(title: marbresList[index]['title'],image: marbresList[index]['image'],
-                              price:marbresList[index]['price'],origin: marbresList[index]['origin']));
+                          return MarbreDetail(Marbre(
+                              title: marbresList[index]['title'],
+                              image: marbresList[index]['image'],
+                              price: marbresList[index]['price'],
+                              origin: marbresList[index]['origin']));
                         }));
                       },
                       child: Card(
