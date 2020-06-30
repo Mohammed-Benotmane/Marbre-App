@@ -81,9 +81,9 @@ class _MarbreDetailState extends State<MarbreDetail> {
             flex: 1,
             child: Material(
               elevation: 7,
-              borderRadius: BorderRadius.only(bottomRight: Radius.circular(25),bottomLeft: Radius.circular(25)),
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(35),bottomLeft: Radius.circular(35)),
               child: ClipRRect(
-                borderRadius: BorderRadius.only(bottomRight: Radius.circular(25),bottomLeft: Radius.circular(25)),
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(35),bottomLeft: Radius.circular(35)),
                 child: Container(
                   child: Image.network(widget.marbre.image,height: MediaQuery.of(context).size.height,width: MediaQuery.of(context).size.width,fit: BoxFit.fitWidth,),
                 ),
