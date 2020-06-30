@@ -140,8 +140,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
                 SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                  child: Text(
-                    "Description Description Description Description Description Description Description Description Description Description Description Description Description Description ",
+                  child: Text(widget.marbre.description,
                     style:TextStyle(color: Colors.grey.shade700),),
                 ),
                 SizedBox(height: 30),
