@@ -73,99 +73,95 @@ class _MarbreDetailState extends State<MarbreDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: mainColor,
-        actions: <Widget>[IconButton(onPressed: () {}, icon: Icon(Icons.filter_list))],
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          customAppBar(),
           Expanded(
-            flex: 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Center(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(25),
-                    child: Image.network(
-                      widget.marbre.image,
-                      height: 200,
-                      width: 300,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+            flex: 1,
+            child: Material(
+              elevation: 7,
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(25),bottomLeft: Radius.circular(25)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(25),bottomLeft: Radius.circular(25)),
+                child: Container(
+                  child: Image.network(widget.marbre.image,height: MediaQuery.of(context).size.height,width: MediaQuery.of(context).size.width,fit: BoxFit.fitWidth,),
                 ),
-                Material(
-                  borderRadius: BorderRadius.circular(25),
-                  elevation: 10,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(25),
-                    child: Container(
-                      color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Text(
-                              widget.marbre.title,
-                              style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey.shade800,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              widget.marbre.origin.toUpperCase(),
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: mainColor,
-                              ),
-                            ),
-                            SizedBox(height: 15),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                              child: Text(widget.marbre.description,
-                                style:TextStyle(color: Colors.grey.shade700),),
-                            ),
-                            SizedBox(height: 15),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text(
-                                    "${widget.marbre.price} DA",
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      color: mainColor,
-                                    ),
-                                  ),
-                                  ClipRRect(
-                                    borderRadius:
-                                    BorderRadius.circular(25),
-                                    child: RaisedButton(
-                                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
-                                      onPressed: () {},
-                                      color: mainColor,
-                                      child: Text(
-                                        "Validate",
-                                        style: TextStyle(color: Colors.white, fontSize: 20),
-                                      ),
-                                    ),
-                                  ),
+              ),
+            ),
+          ),
 
-                                ],
-                        ),
-                    ),
-                            SizedBox(height: 10),
-                          ],
-                        ),
+          Expanded(
+            flex: 2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+
+                ClipRRect(
+                  borderRadius:
+                      BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+                  child: Container(
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Text(
+                            widget.marbre.title,
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey.shade800,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            widget.marbre.origin.toUpperCase(),
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: mainColor,
+                            ),
+                          ),
+                          SizedBox(height: 15),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                            child: Text(
+                              widget.marbre.description,
+                              style: TextStyle(color: Colors.grey.shade700),
+                            ),
+                          ),
+                          SizedBox(height: 15),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  "${widget.marbre.price} DA",
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    color: mainColor,
+                                  ),
+                                ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child: RaisedButton(
+                                    padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                                    onPressed: () {},
+                                    color: mainColor,
+                                    child: Text(
+                                      "Validate",
+                                      style: TextStyle(color: Colors.white, fontSize: 20),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                        ],
                       ),
                     ),
                   ),
