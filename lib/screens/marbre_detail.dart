@@ -21,7 +21,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: Card(
-        color: mainColor,
+        color: Colors.grey.shade100,
         child: Row(
           children: <Widget>[
             Image.network(
@@ -34,9 +34,9 @@ class _MarbreDetailState extends State<MarbreDetail> {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Text(widget.marbre.title, style: TextStyle(color: Colors.white,fontSize: 16)),
+                Text(widget.marbre.title, style: TextStyle(color: Colors.grey.shade800,fontSize: 16)),
 
-                Text(widget.marbre.price.toString(), style: TextStyle(color: Colors.white)),
+                Text(widget.marbre.price.toString(), style: TextStyle(color: Colors.grey.shade700)),
               ],
             ),
             SizedBox(width: 10),
@@ -49,7 +49,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: mainColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,6 +58,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
             flex: 1,
             child: Material(
               elevation: 7,
+              shadowColor: Colors.grey.shade100,
               borderRadius:
                   BorderRadius.only(bottomRight: Radius.circular(35), bottomLeft: Radius.circular(35)),
               child: ClipRRect(
@@ -77,11 +78,11 @@ class _MarbreDetailState extends State<MarbreDetail> {
           Expanded(
             flex: 2,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 SizedBox(height: 20),
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(25),topLeft: Radius.circular(25)),
                   child: Container(
                     color: Colors.white,
                     child: Padding(
