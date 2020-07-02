@@ -34,9 +34,9 @@ class _MarbreDetailState extends State<MarbreDetail> {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Text(widget.marbre.title, style: TextStyle(color: Colors.grey.shade800,fontSize: 16)),
+                Text(widget.marbre.title, style: TextStyle(fontSize: 16)),
 
-                Text(widget.marbre.price.toString(), style: TextStyle(color: Colors.grey.shade700)),
+                Text(widget.marbre.price.toString(), style: TextStyle(color: Colors.grey.shade800)),
               ],
             ),
             SizedBox(width: 10),
