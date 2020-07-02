@@ -17,54 +17,31 @@ class _MarbreDetailState extends State<MarbreDetail> {
     super.initState();
   }
 
-  customAppBar() {
-    return Expanded(
-      flex: 1,
-      child: Stack(
-        children: <Widget>[
-          Positioned.fill(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 25),
-              child: Material(
-                elevation: 7,
-                borderRadius: BorderRadius.circular(25),
-                shadowColor: mainColor,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: mainColor,
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(25), bottomRight: Radius.circular(25))),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(18, 0, 18, 35),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          "Marbre Detail",
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 26,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        CircleAvatar(
-                          radius: 28,
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.person,
-                            color: mainColor,
-                            size: 30,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+  customCard() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(25),
+      child: Card(
+        color: mainColor,
+        child: Row(
+          children: <Widget>[
+            Image.network(
+              widget.marbre.image,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width / 5,
+              fit: BoxFit.fitHeight,
             ),
-          ),
-        ],
+            SizedBox(width: 10),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Text(widget.marbre.title, style: TextStyle(color: Colors.white,fontSize: 16)),
+
+                Text(widget.marbre.price.toString(), style: TextStyle(color: Colors.white)),
+              ],
+            ),
+            SizedBox(width: 10),
+          ],
+        ),
       ),
     );
   }
@@ -81,25 +58,30 @@ class _MarbreDetailState extends State<MarbreDetail> {
             flex: 1,
             child: Material(
               elevation: 7,
-              borderRadius: BorderRadius.only(bottomRight: Radius.circular(35),bottomLeft: Radius.circular(35)),
+              borderRadius:
+                  BorderRadius.only(bottomRight: Radius.circular(35), bottomLeft: Radius.circular(35)),
               child: ClipRRect(
-                borderRadius: BorderRadius.only(bottomRight: Radius.circular(35),bottomLeft: Radius.circular(35)),
+                borderRadius:
+                    BorderRadius.only(bottomRight: Radius.circular(35), bottomLeft: Radius.circular(35)),
                 child: Container(
-                  child: Image.network(widget.marbre.image,height: MediaQuery.of(context).size.height,width: MediaQuery.of(context).size.width,fit: BoxFit.fitWidth,),
+                  child: Image.network(
+                    widget.marbre.image,
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
             ),
           ),
-
           Expanded(
             flex: 2,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-
+                SizedBox(height: 20),
                 ClipRRect(
-                  borderRadius:
-                      BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+                  borderRadius: BorderRadius.circular(25),
                   child: Container(
                     color: Colors.white,
                     child: Padding(
@@ -118,7 +100,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
                           ),
                           SizedBox(height: 5),
                           Text(
-                            widget.marbre.origin.toUpperCase(),
+                            "  " + widget.marbre.origin.toUpperCase(),
                             style: TextStyle(
                               fontSize: 16,
                               color: mainColor,
@@ -130,6 +112,18 @@ class _MarbreDetailState extends State<MarbreDetail> {
                             child: Text(
                               widget.marbre.description,
                               style: TextStyle(color: Colors.grey.shade700),
+                            ),
+                          ),
+                          SizedBox(height: 15),
+                          Container(
+                            height: MediaQuery.of(context).size.height / 8,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 6,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return customCard();
+                              },
                             ),
                           ),
                           SizedBox(height: 15),
@@ -160,7 +154,6 @@ class _MarbreDetailState extends State<MarbreDetail> {
                               ],
                             ),
                           ),
-
                         ],
                       ),
                     ),
