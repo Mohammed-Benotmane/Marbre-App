@@ -49,7 +49,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF85CBB3),
+      backgroundColor: Colors.blue[100],
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
