@@ -126,7 +126,21 @@ class _MarbreDetailState extends State<MarbreDetail> {
                               itemCount: widget.marbreList.length,
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
-                                return customCard(widget.marbreList[index]['image'],widget.marbreList[index]['title'],widget.marbreList[index]['price']);
+                                return GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                      return MarbreDetail(Marbre(
+                                          title: widget.marbreList[index]['title'],
+                                          image: widget.marbreList[index]['image'],
+                                          price: widget.marbreList[index]['price'],
+                                          origin: widget.marbreList[index]['origin'],
+                                          description: widget.marbreList[index]['description']
+                                      ),widget.marbreList
+                                      );
+                                    }));
+                                  },
+                                  child: customCard(widget.marbreList[index]['image'],widget.marbreList[index]['title'],widget.marbreList[index]['price']),
+                                );
                               },
                             ),
                           ),
