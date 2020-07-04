@@ -4,8 +4,9 @@ import 'package:sofamarbre/models/marbre.dart';
 
 class MarbreDetail extends StatefulWidget {
   Marbre marbre;
+  List marbreList;
 
-  MarbreDetail(this.marbre);
+  MarbreDetail(this.marbre,this.marbreList);
 
   @override
   _MarbreDetailState createState() => _MarbreDetailState();
@@ -17,7 +18,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
     super.initState();
   }
 
-  customCard() {
+  customCard(String image,String title,int price) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: Card(
@@ -25,7 +26,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
         child: Row(
           children: <Widget>[
             Image.network(
-              widget.marbre.image,
+              image,
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width / 5,
               fit: BoxFit.fitHeight,
@@ -34,9 +35,9 @@ class _MarbreDetailState extends State<MarbreDetail> {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Text(widget.marbre.title, style: TextStyle(fontSize: 16)),
+                Text(title, style: TextStyle(fontSize: 16)),
 
-                Text(widget.marbre.price.toString(), style: TextStyle(color: Colors.grey.shade800)),
+                Text(price.toString(), style: TextStyle(color: Colors.grey.shade800)),
               ],
             ),
             SizedBox(width: 10),
@@ -69,7 +70,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
                     widget.marbre.image,
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -110,9 +111,11 @@ class _MarbreDetailState extends State<MarbreDetail> {
                           SizedBox(height: 15),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                            child: Text(
-                              widget.marbre.description,
-                              style: TextStyle(color: Colors.grey.shade700),
+                            child: Center(
+                              child: Text(
+                                widget.marbre.description,
+                                style: TextStyle(color: Colors.grey.shade700),
+                              ),
                             ),
                           ),
                           SizedBox(height: 15),
@@ -120,10 +123,10 @@ class _MarbreDetailState extends State<MarbreDetail> {
                             height: MediaQuery.of(context).size.height / 8,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: 6,
+                              itemCount: widget.marbreList.length,
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
-                                return customCard();
+                                return customCard(widget.marbreList[index]['image'],widget.marbreList[index]['title'],widget.marbreList[index]['price']);
                               },
                             ),
                           ),

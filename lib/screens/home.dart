@@ -84,7 +84,7 @@ class _HomeState extends State<Home> {
                               price: marbresList[index]['price'],
                               origin: marbresList[index]['origin'],
                               description: marbresList[index]['description']
-                          )
+                          ),marbresList
                           );
                         }));
                       },
