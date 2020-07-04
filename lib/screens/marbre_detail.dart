@@ -6,7 +6,7 @@ class MarbreDetail extends StatefulWidget {
   Marbre marbre;
   List marbreList;
 
-  MarbreDetail(this.marbre,this.marbreList);
+  MarbreDetail(this.marbre, this.marbreList);
 
   @override
   _MarbreDetailState createState() => _MarbreDetailState();
@@ -18,7 +18,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
     super.initState();
   }
 
-  customCard(String image,String title,int price) {
+  customCard(String image, String title, int price) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: Card(
@@ -36,7 +36,6 @@ class _MarbreDetailState extends State<MarbreDetail> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Text(title, style: TextStyle(fontSize: 16)),
-
                 Text(price.toString(), style: TextStyle(color: Colors.grey.shade800)),
               ],
             ),
@@ -53,7 +52,6 @@ class _MarbreDetailState extends State<MarbreDetail> {
       backgroundColor: Colors.blue[100],
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(
             flex: 1,
@@ -83,11 +81,12 @@ class _MarbreDetailState extends State<MarbreDetail> {
               children: <Widget>[
                 SizedBox(height: 20),
                 ClipRRect(
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(25),topLeft: Radius.circular(25)),
+                  borderRadius:
+                      BorderRadius.only(topRight: Radius.circular(25), topLeft: Radius.circular(25)),
                   child: Container(
                     color: Colors.white,
                     child: Padding(
-                      padding: const EdgeInsets.all(30.0),
+                      padding: const EdgeInsets.fromLTRB(30, 30, 30, 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -108,17 +107,23 @@ class _MarbreDetailState extends State<MarbreDetail> {
                               color: mainColor,
                             ),
                           ),
-                          SizedBox(height: 15),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                            child: Center(
-                              child: Text(
-                                widget.marbre.description,
-                                style: TextStyle(color: Colors.grey.shade700),
-                              ),
+                          SizedBox(height: 30),
+                          Center(
+                            child: Text(
+                              widget.marbre.description,
+                              style: TextStyle(color: Colors.grey.shade700, fontSize: 20),
                             ),
                           ),
-                          SizedBox(height: 15),
+                          SizedBox(height: 30),
+                          Text(
+                            "People also liked:",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: mainColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(height: 10),
                           Container(
                             height: MediaQuery.of(context).size.height / 8,
                             child: ListView.builder(
@@ -127,24 +132,25 @@ class _MarbreDetailState extends State<MarbreDetail> {
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 return GestureDetector(
-                                  onTap: (){
+                                  onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                      return MarbreDetail(Marbre(
-                                          title: widget.marbreList[index]['title'],
-                                          image: widget.marbreList[index]['image'],
-                                          price: widget.marbreList[index]['price'],
-                                          origin: widget.marbreList[index]['origin'],
-                                          description: widget.marbreList[index]['description']
-                                      ),widget.marbreList
-                                      );
+                                      return MarbreDetail(
+                                          Marbre(
+                                              title: widget.marbreList[index]['title'],
+                                              image: widget.marbreList[index]['image'],
+                                              price: widget.marbreList[index]['price'],
+                                              origin: widget.marbreList[index]['origin'],
+                                              description: widget.marbreList[index]['description']),
+                                          widget.marbreList);
                                     }));
                                   },
-                                  child: customCard(widget.marbreList[index]['image'],widget.marbreList[index]['title'],widget.marbreList[index]['price']),
+                                  child: customCard(widget.marbreList[index]['image'],
+                                      widget.marbreList[index]['title'], widget.marbreList[index]['price']),
                                 );
                               },
                             ),
                           ),
-                          SizedBox(height: 15),
+                          SizedBox(height: 30),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Row(
@@ -152,18 +158,17 @@ class _MarbreDetailState extends State<MarbreDetail> {
                               children: <Widget>[
                                 Text(
                                   "${widget.marbre.price} DA",
-                                  style: TextStyle(
-                                    fontSize: 22,
-                                    color: mainColor,
-                                  ),
+                                  style:
+                                      TextStyle(fontSize: 26, color: mainColor, fontWeight: FontWeight.w500),
                                 ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(25),
-                                  child: RaisedButton(
-                                    padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                                  child: RaisedButton.icon(
+                                    icon: Icon(Icons.check, color: Colors.white),
+                                    padding: EdgeInsets.fromLTRB(15, 10, 30, 10),
                                     onPressed: () {},
                                     color: mainColor,
-                                    child: Text(
+                                    label: Text(
                                       "Validate",
                                       style: TextStyle(color: Colors.white, fontSize: 20),
                                     ),
