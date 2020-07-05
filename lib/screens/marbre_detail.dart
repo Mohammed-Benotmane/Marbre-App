@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sofamarbre/const.dart';
 import 'package:sofamarbre/models/marbre.dart';
@@ -111,9 +112,10 @@ class _MarbreDetailState extends State<MarbreDetail> {
                           ),
                           SizedBox(height: 30),
                           Center(
-                            child: Text(
+                            child: AutoSizeText(
                               widget.marbre.description,
                               style: TextStyle(color: Colors.grey.shade700, fontSize: 20),
+                              maxLines: 4,
                             ),
                           ),
                           SizedBox(height: 30),
