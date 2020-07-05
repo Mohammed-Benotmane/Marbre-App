@@ -47,9 +47,9 @@ class _HomeState extends State<Home> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            new Container(
-              child: new DrawerHeader(
-                  child: new CircleAvatar(
+            Container(
+              child: DrawerHeader(
+                  child: CircleAvatar(
                 radius: 10,
                 backgroundColor: Colors.white,
                 child: Icon(
@@ -60,7 +60,20 @@ class _HomeState extends State<Home> {
               )),
               color: mainColor,
             ),
-            ListTile(title: Text("Parametre"),)
+            ListTile(
+              title: Text("Parametre"),
+              leading: Icon(
+                Icons.settings,
+                color: mainColor,
+              ),
+            ),
+            ListTile(
+              title: Text("About me"),
+              leading: Icon(
+                Icons.settings,
+                color: mainColor,
+              ),
+            ),
           ],
         ),
       ),
