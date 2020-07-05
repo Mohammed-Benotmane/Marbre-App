@@ -1,16 +1,13 @@
 # sofamarbre
 
-A new Flutter application.
+![GitHub license](https://img.shields.io/github/license/Mohammed-Benotmane/Tower-Defense-Game.svg)
+![Jetlight studio](https://img.shields.io/badge/Made%20by-Jetlight%20studio-blue.svg?color=082544)
 
-## Getting Started
+## Description:
 
-This project is a starting point for a Flutter application.
+This is an application made by Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+### Backend Project Link
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## ScreenShot:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
