@@ -22,7 +22,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: Card(
-        color: Colors.grey.shade100,
+        color: Colors.white,
         child: Row(
           children: <Widget>[
             Image.network(
@@ -49,7 +49,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.grey.shade100,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -82,7 +82,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
                 SizedBox(height: 20),
                 ClipRRect(
                   borderRadius:
-                      BorderRadius.only(topRight: Radius.circular(25), topLeft: Radius.circular(25)),
+                      BorderRadius.only(topRight: Radius.circular(35), topLeft: Radius.circular(35)),
                   child: Container(
                     color: Colors.white,
                     child: Padding(
@@ -91,6 +91,8 @@ class _MarbreDetailState extends State<MarbreDetail> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
+                          Center(child: ClipRRect(borderRadius: BorderRadius.circular(5),child: Container(color: mainColor,width: 60,height: 5,))),
+                          SizedBox(height: 20),
                           Text(
                             widget.marbre.title,
                             style: TextStyle(
@@ -125,7 +127,7 @@ class _MarbreDetailState extends State<MarbreDetail> {
                           ),
                           SizedBox(height: 10),
                           Container(
-                            height: MediaQuery.of(context).size.height / 8,
+                            height: MediaQuery.of(context).size.height / 7,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: widget.marbreList.length,
