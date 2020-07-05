@@ -47,10 +47,20 @@ class _HomeState extends State<Home> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            DrawerHeader(
-              margin: EdgeInsets.all(0),
-              child: Container(color: mainColor),
-            )
+            new Container(
+              child: new DrawerHeader(
+                  child: new CircleAvatar(
+                radius: 10,
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.person,
+                  color: mainColor,
+                  size: 50,
+                ),
+              )),
+              color: mainColor,
+            ),
+            ListTile(title: Text("Parametre"),)
           ],
         ),
       ),
@@ -78,14 +88,14 @@ class _HomeState extends State<Home> {
                     return GestureDetector(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return MarbreDetail(Marbre(
-                              title: marbresList[index]['title'],
-                              image: marbresList[index]['image'],
-                              price: marbresList[index]['price'],
-                              origin: marbresList[index]['origin'],
-                              description: marbresList[index]['description']
-                          ),marbresList
-                          );
+                          return MarbreDetail(
+                              Marbre(
+                                  title: marbresList[index]['title'],
+                                  image: marbresList[index]['image'],
+                                  price: marbresList[index]['price'],
+                                  origin: marbresList[index]['origin'],
+                                  description: marbresList[index]['description']),
+                              marbresList);
                         }));
                       },
                       child: Card(
