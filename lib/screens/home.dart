@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:sofamarbre/const.dart';
@@ -49,30 +50,68 @@ class _HomeState extends State<Home> {
           children: <Widget>[
             Container(
               child: DrawerHeader(
-                  child: CircleAvatar(
-                radius: 10,
+                  child: Row(
+                    children: <Widget>[
+                      CircleAvatar(
+                radius: 40,
                 backgroundColor: Colors.white,
                 child: Icon(
-                  Icons.person,
-                  color: mainColor,
-                  size: 50,
+                      Icons.person,
+                      color: mainColor,
+                  size: 45,
                 ),
-              )),
+              ),
+                      Text(
+                        "  User 1",
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 26,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  )),
               color: mainColor,
             ),
+            SizedBox(height: 10),
             ListTile(
-              title: Text("Parametre"),
+              title: Text("Modify Informations"),
+              leading: Icon(
+                Icons.border_color,
+                color: mainColor,
+              ),
+            ),
+            ListTile(
+              title: Text("Settings"),
               leading: Icon(
                 Icons.settings,
+                color: mainColor,
+              ),
+            ),
+            ListTile(
+              title: Text("Help"),
+              leading: Icon(
+                Icons.help,
                 color: mainColor,
               ),
             ),
             ListTile(
               title: Text("About me"),
               leading: Icon(
-                Icons.settings,
+                Icons.error,
                 color: mainColor,
               ),
+            ),
+            ListTile(
+              title: Text("Logout"),
+              leading: Icon(
+                Icons.cancel,
+                color: Colors.red[900],
+              ),
+            ),
+            Divider(
+                height: 0.40
             ),
           ],
         ),
