@@ -47,71 +47,108 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.grey[200],
       drawer: Drawer(
         child: ListView(
+          shrinkWrap: true,
           children: <Widget>[
             Container(
               child: DrawerHeader(
                   child: Row(
-                    children: <Widget>[
-                      CircleAvatar(
-                radius: 40,
-                backgroundColor: Colors.white,
-                child: Icon(
+                children: <Widget>[
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.white,
+                    child: Icon(
                       Icons.person,
                       color: mainColor,
-                  size: 45,
-                ),
-              ),
-                      Text(
-                        "  User 1",
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 26,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  )),
+                      size: 45,
+                    ),
+                  ),
+                  Text(
+                    "  User 1",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 26,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              )),
               color: mainColor,
             ),
-            SizedBox(height: 10),
-            ListTile(
-              title: Text("Modify Informations"),
-              leading: Icon(
-                Icons.border_color,
-                color: mainColor,
+            Expanded(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: 10),
+                  ListTile(
+                    title: Text("Profile"),
+                    leading: Icon(
+                      Icons.border_color,
+                      color: mainColor,
+                    ),
+                  ),
+                  ListTile(
+                    title: Text("Settings"),
+                    leading: Icon(
+                      Icons.settings,
+                      color: mainColor,
+                    ),
+                  ),
+                  ListTile(
+                    title: Text("Help"),
+                    leading: Icon(
+                      Icons.help,
+                      color: mainColor,
+                    ),
+                  ),
+                  ListTile(
+                    title: Text("About us"),
+                    leading: Icon(
+                      Icons.error,
+                      color: mainColor,
+                    ),
+                  ),
+                  ListTile(
+                    title: Text("Logout"),
+                    leading: Icon(
+                      Icons.cancel,
+                      color: Colors.red[900],
+                    ),
+                  ),
+                ],
               ),
             ),
-            ListTile(
-              title: Text("Settings"),
-              leading: Icon(
-                Icons.settings,
-                color: mainColor,
-              ),
-            ),
-            ListTile(
-              title: Text("Help"),
-              leading: Icon(
-                Icons.help,
-                color: mainColor,
-              ),
-            ),
-            ListTile(
-              title: Text("About me"),
-              leading: Icon(
-                Icons.error,
-                color: mainColor,
-              ),
-            ),
-            ListTile(
-              title: Text("Logout"),
-              leading: Icon(
-                Icons.cancel,
-                color: Colors.red[900],
-              ),
-            ),
-            Divider(
-                height: 0.40
+            Column(
+              children: <Widget>[
+                Divider(height: 0.40),
+                Center(
+                    child: Text(
+                  "Contact us",
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16, letterSpacing: 0.5),
+                )),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Image.asset(
+                      "assets/instagram.jpg",
+                      height: 40,
+                    ),
+                    Image.asset(
+                      "assets/facebook.jpg",
+                      height: 40,
+                    ),
+                    Image.asset(
+                      "assets/github.jpg",
+                      height: 40,
+                    ),
+                  ],
+                ),
+                Center(
+                    child: Text(
+                  "Made with ♡ by Jetlight Studio",
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.grey.shade600),
+                )),
+              ],
             ),
           ],
         ),
