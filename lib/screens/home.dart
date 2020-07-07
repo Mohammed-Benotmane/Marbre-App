@@ -46,109 +46,129 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       drawer: Drawer(
-        child: ListView(
-          shrinkWrap: true,
+        child: Column(
           children: <Widget>[
-            Container(
-              child: DrawerHeader(
-                  child: Row(
-                children: <Widget>[
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.person,
-                      color: mainColor,
-                      size: 45,
-                    ),
-                  ),
-                  Text(
-                    "  User 1",
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 26,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              )),
-              color: mainColor,
-            ),
             Expanded(
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 10),
-                  ListTile(
-                    title: Text("Profile"),
-                    leading: Icon(
-                      Icons.border_color,
-                      color: mainColor,
-                    ),
-                  ),
-                  ListTile(
-                    title: Text("Settings"),
-                    leading: Icon(
-                      Icons.settings,
-                      color: mainColor,
-                    ),
-                  ),
-                  ListTile(
-                    title: Text("Help"),
-                    leading: Icon(
-                      Icons.help,
-                      color: mainColor,
-                    ),
-                  ),
-                  ListTile(
-                    title: Text("About us"),
-                    leading: Icon(
-                      Icons.error,
-                      color: mainColor,
-                    ),
-                  ),
-                  ListTile(
-                    title: Text("Logout"),
-                    leading: Icon(
-                      Icons.cancel,
-                      color: Colors.red[900],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Column(
-              children: <Widget>[
-                Divider(height: 0.40),
-                Center(
-                    child: Text(
-                  "Contact us",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16, letterSpacing: 0.5),
-                )),
-                SizedBox(height: 15),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              flex: 1,
+              child: Container(
+                child: DrawerHeader(
+                    child: Row(
                   children: <Widget>[
-                    Image.asset(
-                      "assets/instagram.jpg",
-                      height: 40,
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.person,
+                        color: mainColor,
+                        size: 45,
+                      ),
                     ),
-                    Image.asset(
-                      "assets/facebook.jpg",
-                      height: 40,
-                    ),
-                    Image.asset(
-                      "assets/github.jpg",
-                      height: 40,
+                    Text(
+                      "  User 1",
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
-                ),
-                Center(
-                    child: Text(
-                  "Made with ♡ by Jetlight Studio",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.grey.shade600),
                 )),
-              ],
+                color: mainColor,
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 10),
+                        ListTile(
+                          title: Text("Profile"),
+                          leading: Icon(
+                            Icons.border_color,
+                            color: mainColor,
+                          ),
+                        ),
+                        ListTile(
+                          title: Text("Settings"),
+                          leading: Icon(
+                            Icons.settings,
+                            color: mainColor,
+                          ),
+                        ),
+                        ListTile(
+                          title: Text("Help"),
+                          leading: Icon(
+                            Icons.help,
+                            color: mainColor,
+                          ),
+                        ),
+                        ListTile(
+                          title: Text("About us"),
+                          leading: Icon(
+                            Icons.error,
+                            color: mainColor,
+                          ),
+                        ),
+                        ListTile(
+                          title: Text("Logout"),
+                          leading: Icon(
+                            Icons.cancel,
+                            color: Colors.red[900],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Column(
+                            children: <Widget>[
+                              Divider(height: 0.40),
+                              SizedBox(height: 15),
+                              Center(
+                                  child: Text(
+                                    "Contact us",
+                                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16, letterSpacing: 0.5),
+                                  )),
+                              SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Image.asset(
+                                    "assets/instagram.jpg",
+                                    height: 40,
+                                  ),
+                                  Image.asset(
+                                    "assets/facebook.jpg",
+                                    height: 40,
+                                  ),
+                                  Image.asset(
+                                    "assets/github.jpg",
+                                    height: 40,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Center(
+                              child: Text(
+                                "Made with ♡ by Jetlight Studio \n ",
+                                style: TextStyle(
+                                    fontSize: 12, fontWeight: FontWeight.w400, color: Colors.grey.shade600),
+                              )),
+                        ],
+                      )),
+                ],
+              ),
             ),
           ],
         ),
