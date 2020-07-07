@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Expanded(
-                    flex: 2,
+                    flex: 3,
                     child: Column(
                       children: <Widget>[
                         SizedBox(height: 10),
