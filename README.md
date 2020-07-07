@@ -5,9 +5,11 @@
 
 ## Description:
 
-This is an application made by Flutter.
+This is an e-Shop marble App, made with Flutter, and the backend with Flask (Python).
 
 ### Backend Project Link
 
-## ScreenShot:
+## ScreenShots:
+
+<img src="screenshots/list.jpg" width="200" />  <img src="screenshots/detail.jpg" width="200" /> <img src="screenshots/drawer.jpg" width="200" />
 
