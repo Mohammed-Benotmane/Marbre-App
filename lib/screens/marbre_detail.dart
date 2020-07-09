@@ -155,31 +155,28 @@ class _MarbreDetailState extends State<MarbreDetail> {
                             ),
                           ),
                           SizedBox(height: 30),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  "${widget.marbre.price} DA",
-                                  style:
-                                      TextStyle(fontSize: 26, color: mainColor, fontWeight: FontWeight.w500),
-                                ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: RaisedButton.icon(
-                                    icon: Icon(Icons.check, color: Colors.white),
-                                    padding: EdgeInsets.fromLTRB(15, 10, 30, 10),
-                                    onPressed: () {},
-                                    color: mainColor,
-                                    label: Text(
-                                      "Validate",
-                                      style: TextStyle(color: Colors.white, fontSize: 20),
-                                    ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                "${widget.marbre.price} DA",
+                                style:
+                                    TextStyle(fontSize: 26, color: mainColor, fontWeight: FontWeight.w500),
+                              ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: RaisedButton.icon(
+                                  icon: Icon(Icons.check, color: Colors.white),
+                                  padding: EdgeInsets.fromLTRB(15, 10, 30, 10),
+                                  onPressed: () {},
+                                  color: mainColor,
+                                  label: Text(
+                                    "Validate",
+                                    style: TextStyle(color: Colors.white, fontSize: 20),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
